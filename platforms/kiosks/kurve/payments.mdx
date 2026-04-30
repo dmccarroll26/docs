@@ -1,0 +1,79 @@
+---
+title: "Kurve payments not processing"
+description: "Resolve card machine connection and payment failures on Kurve kiosks."
+sidebarTitle: "Payments"
+---
+
+<Note>
+  The kiosk card machines have their own Wi-Fi connection, separate from the kiosk screen. **Both** must be on the store Wi-Fi for payments to work. Card machine settings require supervisor code `2013`.
+</Note>
+
+### Card machine showing "No Connection"
+
+<Steps>
+  <Step title="Check store Wi-Fi">
+    See [Network & Wi-Fi](/operations/network).
+  </Step>
+  <Step title="Check the card machine separately">
+    It connects independently of the kiosk screen.
+  </Step>
+  <Step title="Enter supervisor code">
+    Code: `2013`.
+  </Step>
+  <Step title="Verify network">
+    Check Wi-Fi / Network settings.
+  </Step>
+  <Step title="Reconnect">
+    Choose the correct store network.
+  </Step>
+  <Step title="Test a payment">
+    Exit and run a test.
+  </Step>
+  <Step title="Restart if needed">
+    Unplug, wait 15 seconds, replug.
+  </Step>
+</Steps>
+
+### Payment times out or fails on kiosk
+
+<Steps>
+  <Step title="Retry">
+    Customer tries again.
+  </Step>
+  <Step title="Check Wi-Fi">
+    Supervisor code `2013` to inspect.
+  </Step>
+  <Step title="Restart the router">
+    If multiple payments fail. See [Network & Wi-Fi](/operations/network).
+  </Step>
+  <Step title="Redirect to till">
+    If failures continue.
+  </Step>
+  <Step title="Escalate">
+    Contact Dave after 15 minutes.
+  </Step>
+</Steps>
+
+### Contactless not working on kiosk card machine
+
+<Steps>
+  <Step title="Clean the area">
+    Dry cloth.
+  </Step>
+  <Step title="Hold steady">
+    Card flat for 2–3 seconds.
+  </Step>
+  <Step title="Restart the machine">
+    Unplug, wait 15 seconds, replug.
+  </Step>
+  <Step title="Use chip & PIN or main till">
+    If contactless still fails.
+  </Step>
+  <Step title="Log for escalation">
+    Track the issue.
+  </Step>
+</Steps>
+
+## Need help?
+
+If this hasn't resolved your issue, contact **Dave (Ops / Tech)**. See [Escalation contacts](/operations/escalation).

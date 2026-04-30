@@ -1,0 +1,110 @@
+---
+title: "The Active iPad (local server)"
+description: "Understand and troubleshoot the Active iPad — the local server for your POS network."
+sidebarTitle: "Active iPad"
+---
+
+One iPad in each store acts as the **Active Device** — the local server for your POS network. If the Active iPad goes down, everything else breaks.
+
+<Info>
+  **What the Active iPad does**
+
+  - Stores financial transactions and open order data locally.
+  - Keeps all other iPads in sync.
+  - Sends data to the Lightspeed Back Office.
+  - Receives all online orders (Order Anywhere) — these route to the Active Device only.
+  - Routes orders to the digital line docket printer.
+</Info>
+
+<Warning>
+  **Rules**
+
+  - Only **one** Active Device per store. Multiple Active Devices cause sync errors and instability.
+  - The Active iPad **must** stay powered on, connected to Wi-Fi, and have Lightspeed open during all service hours.
+  - If the Active iPad disconnects or the app closes, other iPads will stop working properly.
+</Warning>
+
+### Other iPads not working / orders not syncing
+
+<Steps>
+  <Step title="Suspect the Active iPad first">
+    Most likely cause: it's offline or the app has closed.
+  </Step>
+  <Step title="Identify the Active Device">
+    Check with your manager or the store setup sheet.
+  </Step>
+  <Step title="Verify it's online">
+    Powered on, on Wi-Fi, Lightspeed open in foreground.
+  </Step>
+  <Step title="Reopen the app">
+    Wait 1–2 minutes for other iPads to reconnect.
+  </Step>
+  <Step title="Restart the Active iPad">
+    Power off, wait 30 seconds, power on, reopen Lightspeed.
+  </Step>
+</Steps>
+
+### Online orders (Order Anywhere) not coming through
+
+<Steps>
+  <Step title="Check the Active Device">
+    Online orders route to it only.
+  </Step>
+  <Step title="Verify status">
+    Online, on Wi-Fi, Lightspeed open.
+  </Step>
+  <Step title="Allow time after restart">
+    Online orders may take a few minutes to resume.
+  </Step>
+  <Step title="Escalate">
+    If still missing after 5 minutes, contact Dave.
+  </Step>
+</Steps>
+
+### How to check or change which iPad is Active
+
+<Steps>
+  <Step title="Open Back Office">
+    POS → Devices.
+  </Step>
+  <Step title="Check status">
+    Active or Passive.
+  </Step>
+  <Step title="Promote a Passive device">
+    Takes effect after starting a new shift.
+  </Step>
+  <Step title="Demote an Active device">
+    Takes effect the next day or next shift.
+  </Step>
+  <Step title="Always confirm with Dave">
+    Incorrect setup causes store-wide errors.
+  </Step>
+</Steps>
+
+### Active iPad is damaged or needs replacing
+
+<Steps>
+  <Step title="Promote a replacement">
+    Pick another iPad to take over.
+  </Step>
+  <Step title="Update Back Office">
+    POS → Devices → select the replacement → set to Active.
+  </Step>
+  <Step title="Reassign hardware">
+    Assign the printer and payment terminal to the new Active Device.
+  </Step>
+  <Step title="Start a new shift">
+    Required for the change to take effect.
+  </Step>
+  <Step title="Notify Dave">
+    For setup review and broken-iPad replacement.
+  </Step>
+</Steps>
+
+<Tip>
+  **Daily check:** At the start of each day, confirm the Active iPad is powered on, connected to Wi-Fi, and has Lightspeed open before opening the store. This prevents most POS and docket-printing issues before they happen.
+</Tip>
+
+## Need help?
+
+If this hasn't resolved your issue, contact **Dave (Ops / Tech)**. See [Escalation contacts](/operations/escalation).

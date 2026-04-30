@@ -24,14 +24,50 @@
           {
             "group": "Platforms",
             "pages": [
-              "platforms/lightspeed",
-              "platforms/five-id",
-              "platforms/instore-printers",
+              {
+                "group": "Lightspeed",
+                "pages": [
+                  "platforms/lightspeed/app-frozen",
+                  "platforms/lightspeed/till-issues",
+                  "platforms/lightspeed/active-ipad"
+                ]
+              },
+              {
+                "group": "Five.ID",
+                "pages": [
+                  "platforms/five-id/card-reader",
+                  "platforms/five-id/qr-scanning",
+                  "platforms/five-id/network",
+                  "platforms/five-id/transactions"
+                ]
+              },
+              {
+                "group": "Instore Printers",
+                "pages": [
+                  "platforms/instore-printers/receipt-printer",
+                  "platforms/instore-printers/docket-printer"
+                ]
+              },
               {
                 "group": "Kiosks",
                 "pages": [
-                  "platforms/kiosks/kurve",
-                  "platforms/kiosks/elo-i-series"
+                  {
+                    "group": "Kurve",
+                    "pages": [
+                      "platforms/kiosks/kurve/screen-frozen",
+                      "platforms/kiosks/kurve/payments",
+                      "platforms/kiosks/kurve/orders",
+                      "platforms/kiosks/kurve/wifi"
+                    ]
+                  },
+                  {
+                    "group": "Elo I-Series",
+                    "pages": [
+                      "platforms/kiosks/elo-i-series/power",
+                      "platforms/kiosks/elo-i-series/display",
+                      "platforms/kiosks/elo-i-series/restart"
+                    ]
+                  }
                 ]
               },
               "platforms/square"
