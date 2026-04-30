@@ -1,0 +1,69 @@
+---
+title: "Square"
+description: "Use Square terminals as backup payment processing when the primary network and Five.ID terminals are down."
+sidebarTitle: "Square"
+---
+
+Each store has backup **Square** terminals for use when the primary network and payment systems are down. Square supports an offline mode that allows card payments without an internet connection.
+
+<Note>
+  Square is a fallback only. If a mobile hotspot is available, connect the primary systems (Five.ID and Lightspeed) to it first — only switch to Square when no other option works.
+</Note>
+
+## Switching to Square backup
+
+<AccordionGroup>
+  <Accordion title="How to switch to Square backup terminals">
+    <Steps>
+      <Step title="Locate the terminal">
+        Back office or manager's area.
+      </Step>
+      <Step title="Power on">
+        Should be kept charged and ready.
+      </Step>
+      <Step title="Enable offline mode">
+        Settings → Checkout → Offline Mode.
+      </Step>
+      <Step title="Process payments">
+        Inform customers you're using a backup system.
+      </Step>
+      <Step title="Note the risk">
+        Offline payments queue and process when reconnected. Some may be declined later.
+      </Step>
+      <Step title="Keep a manual log">
+        Amount, time, order number for reconciliation.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="When to switch back to the primary system">
+    <Steps>
+      <Step title="Wait for Lightspeed and Five.ID">
+        Once the network is restored.
+      </Step>
+      <Step title="Stop new Square payments">
+        Allow queued offline payments to sync.
+      </Step>
+      <Step title="Confirm sync">
+        Check the Square dashboard or app.
+      </Step>
+      <Step title="Notify Dave">
+        For reconciliation against Lightspeed.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  **Offline limitations (even with Square backup)**
+
+  - Kiosks cannot process orders or payments — lock them via the admin panel.
+  - Leat loyalty scanning will not work.
+  - Delivery platform orders won't come through (Deliveroo, Just Eat, Uber Eats).
+  - Take orders manually at the till; call to the kitchen verbally if KDS is also down.
+  - If you have a mobile hotspot, connect the primary systems first; Square is a last resort.
+  - If the store is offline for more than 2 hours with no resolution in sight, escalate to your Area Manager about closing.
+</Warning>
+
+## Need help?
+
+If a transaction is in dispute or queued offline payments fail to sync, contact **Dave (Ops / Tech)** for reconciliation. See [Escalation contacts](/operations/escalation).

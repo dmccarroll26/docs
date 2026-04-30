@@ -1,0 +1,198 @@
+---
+title: "Instore Printers"
+description: "Troubleshoot the Epson TM-m30III receipt and digital line docket printers."
+sidebarTitle: "Instore Printers"
+---
+
+Sprout stores use **Epson TM-m30III** thermal printers for both receipts and kitchen dockets. Both connect via Bluetooth and have blue status lights.
+
+<Note>
+  The receipt printer pairs with the till iPad. The docket printer pairs with the **Active iPad** — if it stops printing dockets, check the [Active iPad](/platforms/lightspeed#the-active-ipad-local-server) first.
+</Note>
+
+## Receipt printer (under till)
+
+The receipt printer sits under the till counter and connects via Bluetooth to the till iPad.
+
+<AccordionGroup>
+  <Accordion title="Not printing / no output">
+    <Steps>
+      <Step title="Check power">
+        Solid blue power light.
+      </Step>
+      <Step title="Check Bluetooth light">
+        Solid blue. If off, the printer is disconnected.
+      </Step>
+      <Step title="Check paper">
+        Replace the roll if empty.
+      </Step>
+      <Step title="Check Lightspeed">
+        Settings → Printers.
+      </Step>
+      <Step title="Restart the printer">
+        Power off, wait 15 seconds, power on; let it re-pair.
+      </Step>
+      <Step title="Check iPad Bluetooth">
+        Settings → Bluetooth → confirm Epson is connected.
+      </Step>
+      <Step title="Re-pair if needed">
+        Forget the device and re-pair.
+      </Step>
+      <Step title="Test print">
+        From Lightspeed.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Printing blank receipts">
+    <Steps>
+      <Step title="Check roll orientation">
+        Thermal (smooth) side faces outward.
+      </Step>
+      <Step title="Reload">
+        Flip and reload.
+      </Step>
+      <Step title="Test print">
+        Confirm.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Faded or partial printing">
+    <Steps>
+      <Step title="Replace the roll">
+        Likely running low.
+      </Step>
+      <Step title="Clean the print head">
+        Lint-free cloth, no liquids.
+      </Step>
+      <Step title="Escalate">
+        Print head may need replacement.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Bluetooth keeps disconnecting">
+    <Steps>
+      <Step title="Check range">
+        5–10 metres, obstacles can interfere.
+      </Step>
+      <Step title="Restart both devices">
+        Printer and iPad.
+      </Step>
+      <Step title="Forget and re-pair">
+        Settings → Bluetooth → (i) → Forget This Device.
+      </Step>
+      <Step title="Avoid pairing conflicts">
+        The Epson pairs with one device at a time.
+      </Step>
+      <Step title="Escalate to Dave">
+        If drops continue.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+## Digital line docket printer
+
+The docket printer is paired via Bluetooth to the **Active iPad**. For dockets to print, the Active iPad must have Lightspeed open and the Active Device must be online.
+
+<Warning>
+  If dockets stop printing, the Active iPad is the **first** thing to check. See [Lightspeed → Active iPad](/platforms/lightspeed#the-active-ipad-local-server).
+</Warning>
+
+<AccordionGroup>
+  <Accordion title="Kitchen not receiving dockets">
+    <Steps>
+      <Step title="Check power">
+        Solid blue power light.
+      </Step>
+      <Step title="Check Bluetooth light">
+        If off, the printer has lost its connection to the iPad.
+      </Step>
+      <Step title="Lightspeed must be open">
+        On the paired iPad.
+      </Step>
+      <Step title="Active Device must be online">
+        Critical: Settings → Active Device must show online.
+      </Step>
+      <Step title="Restart the printer">
+        Power off, wait 15 seconds, power on; let it re-pair.
+      </Step>
+      <Step title="Check iPad Bluetooth">
+        Settings → Bluetooth.
+      </Step>
+      <Step title="Re-pair if needed">
+        Forget the device and re-pair.
+      </Step>
+      <Step title="Test docket">
+        From Lightspeed.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Lightspeed Active Device is offline">
+    <Steps>
+      <Step title="Open Active Device settings">
+        Settings → Active Device on the Active iPad.
+      </Step>
+      <Step title="Bring it back online">
+        Tap the toggle.
+      </Step>
+      <Step title="Reopen Lightspeed">
+        If it won't come online.
+      </Step>
+      <Step title="Restart the iPad">
+        If still offline.
+      </Step>
+      <Step title="Confirm with a test order">
+        Verify the docket prints.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Printing blank dockets">
+    <Steps>
+      <Step title="Check roll orientation">
+        Thermal side outward.
+      </Step>
+      <Step title="Reload">
+        Flip and reload.
+      </Step>
+      <Step title="Test docket">
+        Confirm.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Bluetooth keeps disconnecting from docket printer">
+    <Steps>
+      <Step title="Check range">
+        5–10 metres.
+      </Step>
+      <Step title="Restart both devices">
+        Printer and paired iPad.
+      </Step>
+      <Step title="Forget and re-pair">
+        Settings → Bluetooth → (i) → Forget This Device.
+      </Step>
+      <Step title="Single-device pairing">
+        The Epson pairs with one device at a time.
+      </Step>
+      <Step title="Escalate to Dave">
+        If drops continue.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Wrong items printing on dockets">
+    <Steps>
+      <Step title="Configuration issue">
+        Printer routing in Lightspeed.
+      </Step>
+      <Step title="Check routing">
+        Configuration → Printers → Routing.
+      </Step>
+      <Step title="Don't change it yourself">
+        Escalate to Dave for a central fix.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+## Need help?
+
+If this hasn't resolved your issue, contact **Dave (Ops / Tech)**. See [Escalation contacts](/operations/escalation).

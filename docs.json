@@ -22,9 +22,28 @@
             ]
           },
           {
+            "group": "Platforms",
+            "pages": [
+              "platforms/lightspeed",
+              "platforms/five-id",
+              "platforms/instore-printers",
+              {
+                "group": "Kiosks",
+                "pages": [
+                  "platforms/kiosks/kurve",
+                  "platforms/kiosks/elo-i-series"
+                ]
+              },
+              "platforms/square"
+            ]
+          },
+          {
             "group": "Operations",
             "pages": [
-              "sprout-pos-troubleshooting-guide"
+              "operations/network",
+              "operations/escalation",
+              "operations/store-closure",
+              "operations/quick-reference"
             ]
           },
           {
