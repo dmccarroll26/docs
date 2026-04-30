@@ -1,0 +1,1098 @@
+---
+title: "POS Troubleshooting"
+description: "Resolve common issues across Lightspeed POS, Five.ID terminals, printers, networking, and Kurve kiosks."
+sidebarTitle: "Troubleshooting"
+---
+
+This guide covers the most common issues across the Sprout POS stack and the steps to resolve them at store level. Work through each section in order. If a step doesn't fix the issue, escalate using the contacts in [Section 6](#6-escalation-contacts).
+
+<Note>
+  Before troubleshooting anything else, confirm the **Active iPad** is online. It's the source of most POS, kiosk, and docket-printing issues — see [Section 1.3](#13-the-active-ipad-local-server).
+</Note>
+
+## 1. POS terminal issues (Lightspeed K Series)
+
+### 1.1 Lightspeed app frozen or unresponsive
+
+<AccordionGroup>
+  <Accordion title="App is frozen, buttons not responding">
+    <Steps>
+      <Step title="Open the app switcher">
+        Double-tap the iPad Home button, or swipe up and pause on newer iPads.
+      </Step>
+      <Step title="Force-close Lightspeed">
+        Swipe the Lightspeed app up and off the screen.
+      </Step>
+      <Step title="Reopen the app">
+        Wait 10 seconds, then reopen Lightspeed.
+      </Step>
+      <Step title="Restart the iPad">
+        If it freezes again within 5 minutes, hold Power + Volume Up until the slider appears.
+      </Step>
+      <Step title="Escalate">
+        If the issue persists after the restart, contact Dave / Tech Support.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="App crashes on launch (closes immediately)">
+    <Steps>
+      <Step title="Restart the iPad">
+        Power off, wait 30 seconds, power on.
+      </Step>
+      <Step title="Update Lightspeed">
+        Open the App Store and install any pending updates.
+      </Step>
+      <Step title="Check storage">
+        Settings → General → iPad Storage. If less than 1 GB free, delete unused apps.
+      </Step>
+      <Step title="Reinstall Lightspeed">
+        Delete and reinstall the app. Credentials are in the store iPad folder.
+      </Step>
+      <Step title="Escalate">
+        Contact Dave if reinstalling doesn't fix it.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 1.2 Till not processing orders
+
+<AccordionGroup>
+  <Accordion title="Orders won't send to kitchen / KDS">
+    <Steps>
+      <Step title="Check Wi-Fi">
+        See [Section 4](#4-network--wi-fi-connectivity).
+      </Step>
+      <Step title="Check the KDS">
+        Confirm the device is powered on and on the same network.
+      </Step>
+      <Step title="Verify the connection">
+        In Lightspeed: Settings → Printers & Devices.
+      </Step>
+      <Step title="Restart the KDS">
+        If it shows as disconnected.
+      </Step>
+      <Step title="Workaround">
+        Call orders verbally and log on paper until resolved.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Duplicate orders appearing">
+    <Steps>
+      <Step title="Don't void blindly">
+        Duplicates may be legitimate.
+      </Step>
+      <Step title="Check for double taps">
+        Common during lag.
+      </Step>
+      <Step title="Void with a reason">
+        Manager → Void with a clear reason note.
+      </Step>
+      <Step title="Restart Lightspeed">
+        If duplicates keep appearing.
+      </Step>
+      <Step title="Log it">
+        Note in the store comms sheet for end-of-day reconciliation.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Menu items missing or showing wrong prices">
+    <Steps>
+      <Step title="Pull to refresh">
+        Swipe down on the order screen.
+      </Step>
+      <Step title="Force a sync">
+        Settings → Sync → **Sync Now**.
+      </Step>
+      <Step title="Check with Ops">
+        Confirm with Dave whether a menu update was pushed.
+      </Step>
+      <Step title="Don't adjust at the till">
+        Escalate for a central fix.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 1.3 The Active iPad (local server)
+
+One iPad in each store acts as the **Active Device** — the local server for your POS network. If the Active iPad goes down, everything else breaks.
+
+<Info>
+  **What the Active iPad does**
+
+  - Stores financial transactions and open order data locally.
+  - Keeps all other iPads in sync.
+  - Sends data to the Lightspeed Back Office.
+  - Receives all online orders (Order Anywhere) — these route to the Active Device only.
+  - Routes orders to the digital line docket printer (Section 3.2).
+</Info>
+
+<Warning>
+  **Rules**
+
+  - Only **one** Active Device per store. Multiple Active Devices cause sync errors and instability.
+  - The Active iPad **must** stay powered on, connected to Wi-Fi, and have Lightspeed open during all service hours.
+  - If the Active iPad disconnects or the app closes, other iPads will stop working properly.
+</Warning>
+
+<AccordionGroup>
+  <Accordion title="Other iPads not working / orders not syncing">
+    <Steps>
+      <Step title="Suspect the Active iPad first">
+        Most likely cause: it's offline or the app has closed.
+      </Step>
+      <Step title="Identify the Active Device">
+        Check with your manager or the store setup sheet.
+      </Step>
+      <Step title="Verify it's online">
+        Powered on, on Wi-Fi, Lightspeed open in foreground.
+      </Step>
+      <Step title="Reopen the app">
+        Wait 1–2 minutes for other iPads to reconnect.
+      </Step>
+      <Step title="Restart the Active iPad">
+        Power off, wait 30 seconds, power on, reopen Lightspeed.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Online orders (Order Anywhere) not coming through">
+    <Steps>
+      <Step title="Check the Active Device">
+        Online orders route to it only.
+      </Step>
+      <Step title="Verify status">
+        Online, on Wi-Fi, Lightspeed open.
+      </Step>
+      <Step title="Allow time after restart">
+        Online orders may take a few minutes to resume.
+      </Step>
+      <Step title="Escalate">
+        If still missing after 5 minutes, contact Dave.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="How to check or change which iPad is Active">
+    <Steps>
+      <Step title="Open Back Office">
+        POS → Devices.
+      </Step>
+      <Step title="Check status">
+        Active or Passive.
+      </Step>
+      <Step title="Promote a Passive device">
+        Takes effect after starting a new shift.
+      </Step>
+      <Step title="Demote an Active device">
+        Takes effect the next day or next shift.
+      </Step>
+      <Step title="Always confirm with Dave">
+        Incorrect setup causes store-wide errors.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Active iPad is damaged or needs replacing">
+    <Steps>
+      <Step title="Promote a replacement">
+        Pick another iPad to take over.
+      </Step>
+      <Step title="Update Back Office">
+        POS → Devices → select the replacement → set to Active.
+      </Step>
+      <Step title="Reassign hardware">
+        Assign the printer and payment terminal to the new Active Device.
+      </Step>
+      <Step title="Start a new shift">
+        Required for the change to take effect.
+      </Step>
+      <Step title="Notify Dave">
+        For setup review and broken-iPad replacement.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  **Daily check:** At the start of each day, confirm the Active iPad is powered on, connected to Wi-Fi, and has Lightspeed open before opening the store. This prevents most POS and docket-printing issues before they happen.
+</Tip>
+
+## 2. Payment terminal issues (Five.ID)
+
+All Sprout stores use Five.ID terminals for card payments and Leat loyalty scanning.
+
+### 2.1 Card reader connection & hardware
+
+<AccordionGroup>
+  <Accordion title="“Card reader not connected” error">
+    <Steps>
+      <Step title="Check the cable">
+        Firmly connected at both ends.
+      </Step>
+      <Step title="Reseat the cable">
+        Disconnect and reconnect.
+      </Step>
+      <Step title="Power-cycle the terminal">
+        Unplug, wait 15 seconds, replug.
+      </Step>
+      <Step title="Use the correct socket">
+        Always the socket marked with a **Five sticker**.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Card reader screen unresponsive or stuck">
+    <Steps>
+      <Step title="Reset with a pin">
+        Press the reset hole on the side of the reader with a SIM ejector or paperclip.
+      </Step>
+      <Step title="Wait for boot">
+        Let the device fully restart before retrying.
+      </Step>
+      <Step title="Escalate">
+        If still stuck, contact Five.ID support.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Terminal not turning on or repeatedly restarting">
+    <Steps>
+      <Step title="Check the socket">
+        Must be a Five-stickered socket.
+      </Step>
+      <Step title="Avoid loop-restarts">
+        Other sockets can cause power instability.
+      </Step>
+      <Step title="Try another Five socket">
+        If available.
+      </Step>
+      <Step title="Escalate">
+        Contact Five.ID support.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 2.2 QR code / loyalty scanning
+
+<AccordionGroup>
+  <Accordion title="QR code scanning not working (Leat loyalty)">
+    <Steps>
+      <Step title="Position the code">
+        Hold the QR code 10–20 cm from the sensor.
+      </Step>
+      <Step title="Brighten the screen">
+        Customer's phone screen brightness up, code clearly displayed.
+      </Step>
+      <Step title="Clean the lens">
+        Dry cloth.
+      </Step>
+      <Step title="Manual fallback">
+        Enter the customer's loyalty details in Leat using their phone number.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 2.3 Terminal network issues
+
+<AccordionGroup>
+  <Accordion title="iPad or terminal not connected to internet (red error)">
+    <Steps>
+      <Step title="Check store Wi-Fi">
+        See [Section 4](#4-network--wi-fi-connectivity).
+      </Step>
+      <Step title="Use an alternative network">
+        Mobile hotspot if main Wi-Fi is down.
+      </Step>
+      <Step title="Same network for both">
+        iPad and terminal **must** share the same Wi-Fi.
+      </Step>
+      <Step title="No network available">
+        See [Section 4.3](#43-backup-payment-processing-square-terminals).
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="How to change Wi-Fi on the Five terminal">
+    <Steps>
+      <Step title="Open settings">
+        Tap the Five home screen 3 times quickly.
+      </Step>
+      <Step title="Enter the password">
+        `GiveMeFive!`
+      </Step>
+      <Step title="Open Wi-Fi settings">
+        Tap **Open WiFi Settings**.
+      </Step>
+      <Step title="Connect to network">
+        Choose the alternative network.
+      </Step>
+      <Step title="Exit settings">
+        Long-press the FLIC button, or unplug and replug.
+      </Step>
+      <Step title="Match the iPad">
+        Both devices must be on the same Wi-Fi.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 2.4 Transaction failures
+
+<AccordionGroup>
+  <Accordion title="Card declined but customer says funds are available">
+    <Steps>
+      <Step title="Try another card">
+        Or contactless via phone.
+      </Step>
+      <Step title="Retry">
+        First attempts can time out.
+      </Step>
+      <Step title="Test with a staff card">
+        Confirm whether other transactions go through.
+      </Step>
+      <Step title="Network check">
+        If all are failing, see Section 4.
+      </Step>
+      <Step title="Never override">
+        Do not manually process a declined transaction.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Transaction timeout">
+    <Steps>
+      <Step title="Likely network">
+        Slow or unstable connection.
+      </Step>
+      <Step title="Retry">
+        Customer taps/inserts again.
+      </Step>
+      <Step title="Restart the terminal">
+        Unplug, wait 15 seconds, replug — Five-stickered socket.
+      </Step>
+      <Step title="Check Wi-Fi signal">
+        Restart the router if weak (Section 4.2).
+      </Step>
+      <Step title="Escalate">
+        Contact Five.ID support after 15 minutes.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Contactless not working (chip/PIN still works)">
+    <Steps>
+      <Step title="Clean the reader">
+        Dry cloth.
+      </Step>
+      <Step title="Hold steady">
+        Card flat for 2–3 seconds.
+      </Step>
+      <Step title="Reset the reader">
+        Pin hole on the side.
+      </Step>
+      <Step title="Fall back to chip & PIN">
+        Until the terminal is replaced.
+      </Step>
+      <Step title="Log a Five.ID ticket">
+        Request a replacement.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  **Refund note:** If a transaction fails mid-way and the customer is charged, do **not** attempt a manual refund at the till. Contact Five.ID support to confirm the transaction status before taking any action.
+</Warning>
+
+## 3. Printer issues
+
+### 3.1 Receipt printer (Epson TM-m30III, under till)
+
+The receipt printer is the Epson TM-m30III located under the till counter. It connects to the iPad via Bluetooth. Status lights are blue.
+
+<AccordionGroup>
+  <Accordion title="Not printing / no output">
+    <Steps>
+      <Step title="Check power">
+        Solid blue power light.
+      </Step>
+      <Step title="Check Bluetooth light">
+        Solid blue. If off, the printer is disconnected.
+      </Step>
+      <Step title="Check paper">
+        Replace the roll if empty.
+      </Step>
+      <Step title="Check Lightspeed">
+        Settings → Printers.
+      </Step>
+      <Step title="Restart the printer">
+        Power off, wait 15 seconds, power on; let it re-pair.
+      </Step>
+      <Step title="Check iPad Bluetooth">
+        Settings → Bluetooth → confirm Epson is connected.
+      </Step>
+      <Step title="Re-pair if needed">
+        Forget the device and re-pair.
+      </Step>
+      <Step title="Test print">
+        From Lightspeed.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Printing blank receipts">
+    <Steps>
+      <Step title="Check roll orientation">
+        Thermal (smooth) side faces outward.
+      </Step>
+      <Step title="Reload">
+        Flip and reload.
+      </Step>
+      <Step title="Test print">
+        Confirm.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Faded or partial printing">
+    <Steps>
+      <Step title="Replace the roll">
+        Likely running low.
+      </Step>
+      <Step title="Clean the print head">
+        Lint-free cloth, no liquids.
+      </Step>
+      <Step title="Escalate">
+        Print head may need replacement.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Bluetooth keeps disconnecting">
+    <Steps>
+      <Step title="Check range">
+        5–10 metres, obstacles can interfere.
+      </Step>
+      <Step title="Restart both devices">
+        Printer and iPad.
+      </Step>
+      <Step title="Forget and re-pair">
+        Settings → Bluetooth → (i) → Forget This Device.
+      </Step>
+      <Step title="Avoid pairing conflicts">
+        The Epson pairs with one device at a time.
+      </Step>
+      <Step title="Escalate to Dave">
+        If drops continue.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 3.2 Digital line docket printer (Epson TM-m30III)
+
+The digital line docket printer is also an Epson TM-m30III, paired via Bluetooth to the **Active iPad** (see [Section 1.3](#13-the-active-ipad-local-server)). For dockets to print, the Active iPad must have Lightspeed open and the Active Device must be online.
+
+<Note>
+  If dockets stop printing, the Active iPad is the first thing to check.
+</Note>
+
+<AccordionGroup>
+  <Accordion title="Kitchen not receiving dockets">
+    <Steps>
+      <Step title="Check power">
+        Solid blue power light.
+      </Step>
+      <Step title="Check Bluetooth light">
+        If off, the printer has lost its connection to the iPad.
+      </Step>
+      <Step title="Lightspeed must be open">
+        On the paired iPad.
+      </Step>
+      <Step title="Active Device must be online">
+        Critical: Settings → Active Device must show online.
+      </Step>
+      <Step title="Restart the printer">
+        Power off, wait 15 seconds, power on; let it re-pair.
+      </Step>
+      <Step title="Check iPad Bluetooth">
+        Settings → Bluetooth.
+      </Step>
+      <Step title="Re-pair if needed">
+        Forget the device and re-pair.
+      </Step>
+      <Step title="Test docket">
+        From Lightspeed.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Lightspeed Active Device is offline">
+    <Steps>
+      <Step title="Open Active Device settings">
+        Settings → Active Device on the Active iPad.
+      </Step>
+      <Step title="Bring it back online">
+        Tap the toggle.
+      </Step>
+      <Step title="Reopen Lightspeed">
+        If it won't come online.
+      </Step>
+      <Step title="Restart the iPad">
+        If still offline.
+      </Step>
+      <Step title="Confirm with a test order">
+        Verify the docket prints.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Printing blank dockets">
+    <Steps>
+      <Step title="Check roll orientation">
+        Thermal side outward.
+      </Step>
+      <Step title="Reload">
+        Flip and reload.
+      </Step>
+      <Step title="Test docket">
+        Confirm.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Bluetooth keeps disconnecting from docket printer">
+    <Steps>
+      <Step title="Check range">
+        5–10 metres.
+      </Step>
+      <Step title="Restart both devices">
+        Printer and paired iPad.
+      </Step>
+      <Step title="Forget and re-pair">
+        Settings → Bluetooth → (i) → Forget This Device.
+      </Step>
+      <Step title="Single-device pairing">
+        The Epson pairs with one device at a time.
+      </Step>
+      <Step title="Escalate to Dave">
+        If drops continue.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Wrong items printing on dockets">
+    <Steps>
+      <Step title="Configuration issue">
+        Printer routing in Lightspeed.
+      </Step>
+      <Step title="Check routing">
+        Configuration → Printers → Routing.
+      </Step>
+      <Step title="Don't change it yourself">
+        Escalate to Dave for a central fix.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+## 4. Network / Wi-Fi connectivity
+
+### 4.1 Wi-Fi down or unstable
+
+<AccordionGroup>
+  <Accordion title="iPad shows no Wi-Fi connection">
+    <Steps>
+      <Step title="Check other devices">
+        Determine whether it's the iPad or the network.
+      </Step>
+      <Step title="Toggle Wi-Fi on iPad">
+        Settings → Wi-Fi → off, wait 10 seconds, on.
+      </Step>
+      <Step title="Forget and reconnect">
+        Tap (i) → Forget. Password is in the store iPad folder.
+      </Step>
+      <Step title="Restart the router">
+        If all devices are offline (Section 4.2).
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Wi-Fi connected but internet not working">
+    <Steps>
+      <Step title="Test in Safari">
+        Load google.com.
+      </Step>
+      <Step title="Restart the router">
+        If the page won't load.
+      </Step>
+      <Step title="Check Lightspeed status">
+        status.lightspeedhq.com on your phone.
+      </Step>
+      <Step title="Switch to offline mode">
+        If Lightspeed servers are down. Escalate immediately.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 4.2 Router restart procedure
+
+<Warning>
+  A router restart will temporarily disconnect **all** devices in the store (POS, Five terminals, kiosks, KDS, printers). Only restart at a natural pause or when the network is already fully down.
+</Warning>
+
+<Steps>
+  <Step title="Locate the router">
+    Usually in the back office or above the ceiling tiles.
+  </Step>
+  <Step title="Unplug power">
+    Pull the power cable from the router.
+  </Step>
+  <Step title="Wait 60 seconds">
+    Use your phone timer.
+  </Step>
+  <Step title="Plug back in">
+    Reconnect the power cable.
+  </Step>
+  <Step title="Wait for boot">
+    3–5 minutes; lights should stabilise.
+  </Step>
+  <Step title="Reconnect devices in order">
+    iPad → Five terminal → kiosks → printers.
+  </Step>
+  <Step title="Test transactions">
+    On both till and kiosk.
+  </Step>
+</Steps>
+
+### 4.3 Backup payment processing (Square terminals)
+
+Each store has backup Square terminals for use when the primary network and payment systems are down. Square supports an offline mode that allows card payments without an internet connection.
+
+<AccordionGroup>
+  <Accordion title="How to switch to Square backup terminals">
+    <Steps>
+      <Step title="Locate the terminal">
+        Back office or manager's area.
+      </Step>
+      <Step title="Power on">
+        Should be kept charged and ready.
+      </Step>
+      <Step title="Enable offline mode">
+        Settings → Checkout → Offline Mode.
+      </Step>
+      <Step title="Process payments">
+        Inform customers you're using a backup system.
+      </Step>
+      <Step title="Note the risk">
+        Offline payments queue and process when reconnected. Some may be declined later.
+      </Step>
+      <Step title="Keep a manual log">
+        Amount, time, order number for reconciliation.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="When to switch back to the primary system">
+    <Steps>
+      <Step title="Wait for Lightspeed and Five.ID">
+        Once the network is restored.
+      </Step>
+      <Step title="Stop new Square payments">
+        Allow queued offline payments to sync.
+      </Step>
+      <Step title="Confirm sync">
+        Check the Square dashboard or app.
+      </Step>
+      <Step title="Notify Dave">
+        For reconciliation against Lightspeed.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+<Warning>
+  **Offline limitations (even with Square backup)**
+
+  - Kiosks cannot process orders or payments — lock them via the admin panel.
+  - Leat loyalty scanning will not work.
+  - Delivery platform orders won't come through (Deliveroo, Just Eat, Uber Eats).
+  - Take orders manually at the till; call to the kitchen verbally if KDS is also down.
+  - Use a mobile hotspot for the primary systems first; Square is a last resort.
+  - If the store is offline for more than 2 hours with no resolution in sight, escalate to your Area Manager about closing.
+</Warning>
+
+## 5. Kiosk issues (Kurve on Elo I-Series)
+
+Sprout kiosks run Kurve software on Elo I-Series 22" Android touchscreens. The kiosk card machines have a separate Wi-Fi connection and require supervisor code `2013` to access settings.
+
+<Tip>
+  **For all kiosk errors:** Take a photo or screenshot of the error and send it to Kurve Support via WhatsApp (`+44 117 325 3256`) with the store name and time. Do this **first**, before troubleshooting, so Kurve can begin investigating.
+</Tip>
+
+### 5.1 Kiosk screen frozen or unresponsive
+
+<AccordionGroup>
+  <Accordion title="Kurve app frozen / screen not responding to touch">
+    <Steps>
+      <Step title="Wait briefly">
+        15–20 seconds — may be processing or syncing.
+      </Step>
+      <Step title="Open the admin panel">
+        Hold screensaver/home for 3 seconds → passcode `925790`.
+      </Step>
+      <Step title="Soft restart">
+        Hold the Elo power button (rear/underside) for 3 seconds.
+      </Step>
+      <Step title="Power back on">
+        Wait 10 seconds, press power once.
+      </Step>
+      <Step title="Relaunch Kurve">
+        Tap the Kurve icon if it doesn't auto-launch.
+      </Step>
+      <Step title="Hard restart">
+        Unplug power, wait 30 seconds, replug.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Kiosk stuck on a white or black screen">
+    <Steps>
+      <Step title="Check power LED">
+        White = on, red = off, blinking = sleep.
+      </Step>
+      <Step title="Wake from sleep">
+        Tap the screen or press power once.
+      </Step>
+      <Step title="Force restart">
+        Hold power for 10 seconds.
+      </Step>
+      <Step title="Check the cable">
+        If no light, ensure power is connected.
+      </Step>
+      <Step title="Escalate">
+        If unresolved, contact Dave / Kurve support.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Kiosk displaying an error message">
+    <Steps>
+      <Step title="Take a photo">
+        Capture the error.
+      </Step>
+      <Step title="Send to Kurve Support">
+        WhatsApp `+44 117 325 3256` with store name and time.
+      </Step>
+      <Step title="Note the time">
+        Record exactly when it appeared.
+      </Step>
+      <Step title="Restart Kurve">
+        Admin panel via passcode `925790`.
+      </Step>
+      <Step title="Lock the kiosk">
+        Prevent customer use while troubleshooting.
+      </Step>
+      <Step title="Hard restart Elo">
+        Hold power 3 seconds, wait, press once.
+      </Step>
+      <Step title="Escalate with photo">
+        Lock kiosk, post Out of Order sign, contact Dave.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 5.2 Kiosk payments not processing
+
+<Note>
+  The kiosk card machines have their own Wi-Fi connection, separate from the kiosk screen. **Both** must be on the store Wi-Fi for payments to work.
+</Note>
+
+<AccordionGroup>
+  <Accordion title="Card machine showing “No Connection”">
+    <Steps>
+      <Step title="Check store Wi-Fi">
+        See Section 4.
+      </Step>
+      <Step title="Check the card machine separately">
+        It connects independently of the kiosk screen.
+      </Step>
+      <Step title="Enter supervisor code">
+        Code: `2013`.
+      </Step>
+      <Step title="Verify network">
+        Check Wi-Fi / Network settings.
+      </Step>
+      <Step title="Reconnect">
+        Choose the correct store network.
+      </Step>
+      <Step title="Test a payment">
+        Exit and run a test.
+      </Step>
+      <Step title="Restart if needed">
+        Unplug, wait 15 seconds, replug.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Payment times out or fails on kiosk">
+    <Steps>
+      <Step title="Retry">
+        Customer tries again.
+      </Step>
+      <Step title="Check Wi-Fi">
+        Supervisor code `2013` to inspect.
+      </Step>
+      <Step title="Restart the router">
+        If multiple payments fail (Section 4.2).
+      </Step>
+      <Step title="Redirect to till">
+        If failures continue.
+      </Step>
+      <Step title="Escalate">
+        Contact Dave after 15 minutes.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Contactless not working on kiosk card machine">
+    <Steps>
+      <Step title="Clean the area">
+        Dry cloth.
+      </Step>
+      <Step title="Hold steady">
+        Card flat for 2–3 seconds.
+      </Step>
+      <Step title="Restart the machine">
+        Unplug, wait 15 seconds, replug.
+      </Step>
+      <Step title="Use chip & PIN or main till">
+        If contactless still fails.
+      </Step>
+      <Step title="Log for escalation">
+        Track the issue.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 5.3 Kiosk orders not reaching the kitchen
+
+<AccordionGroup>
+  <Accordion title="Customer completes order on kiosk but kitchen doesn't receive it">
+    <Steps>
+      <Step title="Check the Active iPad first">
+        See [Section 1.3](#13-the-active-ipad-local-server). It bridges kiosk and docket printer.
+      </Step>
+      <Step title="Are orders on the Active iPad?">
+        If yes but not printing, see Section 3.2.
+      </Step>
+      <Step title="Are orders missing entirely?">
+        Kiosk-to-POS issue. Check kiosk Wi-Fi.
+      </Step>
+      <Step title="Same network">
+        Kiosk and Active iPad must share the store Wi-Fi.
+      </Step>
+      <Step title="Check Kurve back office">
+        For queued or failed orders.
+      </Step>
+      <Step title="Restart the Elo">
+        Test with a new order.
+      </Step>
+      <Step title="Workaround">
+        Direct customers to the main till; post Out of Order sign.
+      </Step>
+      <Step title="Escalate">
+        Dave / Kurve support.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Orders arriving with missing items or wrong details">
+    <Steps>
+      <Step title="Don't fix at store level">
+        Kurve menu-sync issue.
+      </Step>
+      <Step title="Take a photo">
+        Capture KDS/docket and kiosk screen.
+      </Step>
+      <Step title="Send to Kurve Support">
+        WhatsApp `+44 117 325 3256` and escalate to Dave.
+      </Step>
+      <Step title="Take orders at till">
+        Until resolved.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 5.4 Kiosk Wi-Fi / network issues
+
+<AccordionGroup>
+  <Accordion title="Kiosk shows offline or can't connect">
+    <Steps>
+      <Step title="Check other devices">
+        Confirm whether store Wi-Fi is up.
+      </Step>
+      <Step title="Open admin panel">
+        Hold home for 3 seconds → passcode `925790`.
+      </Step>
+      <Step title="Reconnect Wi-Fi">
+        Choose the correct store network.
+      </Step>
+      <Step title="Lock the kiosk">
+        Prevent customer use while troubleshooting.
+      </Step>
+      <Step title="Restart Kurve">
+        After reconnecting.
+      </Step>
+      <Step title="Check the card machine separately">
+        Supervisor code `2013`.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Connected to Wi-Fi but Kurve won't load / shows errors">
+    <Steps>
+      <Step title="Check internet">
+        Test on another device.
+      </Step>
+      <Step title="Possible Kurve outage">
+        If internet works, escalate.
+      </Step>
+      <Step title="Restart Elo">
+        Hold power 3 seconds, wait, press once.
+      </Step>
+      <Step title="All kiosks affected?">
+        Likely server-side. Direct customers to till and escalate.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+### 5.5 Kiosk hardware issues
+
+<AccordionGroup>
+  <Accordion title="Touch screen not responding accurately">
+    <Steps>
+      <Step title="Clean the screen">
+        Soft, dry cloth.
+      </Step>
+      <Step title="Restart Elo">
+        Cycle power.
+      </Step>
+      <Step title="Recalibration may be needed">
+        Escalate to Dave.
+      </Step>
+      <Step title="Don't recalibrate yourself">
+        Could make the issue worse.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Kiosk not turning on">
+    <Steps>
+      <Step title="Check the LED">
+        Any light = power.
+      </Step>
+      <Step title="Check cables">
+        Kiosk and wall socket.
+      </Step>
+      <Step title="Try a different socket">
+        If available.
+      </Step>
+      <Step title="Escalate">
+        If no LED, the power supply may have failed.
+      </Step>
+      <Step title="Sign and redirect">
+        Out of Order sign; direct customers to till.
+      </Step>
+    </Steps>
+  </Accordion>
+  <Accordion title="Screen brightness very low or display flickering">
+    <Steps>
+      <Step title="Open admin panel">
+        Hold home 3 seconds → passcode `925790`.
+      </Step>
+      <Step title="Check brightness">
+        Adjust if available.
+      </Step>
+      <Step title="Restart if flickering">
+        Cycle the Elo unit.
+      </Step>
+      <Step title="Escalate">
+        May be a hardware fault.
+      </Step>
+    </Steps>
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  **Kiosk golden rule:** If a kiosk isn't working and you can't resolve it within 5 minutes, lock it via the admin panel (hold screensaver 3 seconds → passcode `925790`), post an Out of Order sign, and direct customers to the main till. Don't spend service time troubleshooting — escalate and serve customers.
+</Tip>
+
+## 6. Escalation contacts
+
+If you've followed the steps above and the issue isn't resolved, escalate using the contacts below. Always have ready: store name, time the issue started, what you've tried, and any error messages (photos help).
+
+| Contact | Details | Responsibility | When to call |
+| --- | --- | --- | --- |
+| Dave (Ops / Tech) | First point of contact | All POS, kiosk, network, terminal, and tech issues | Any issue not resolved by this guide |
+| Area Manager | Lee / Renan | Store closure decisions, staffing impact, customer comms | Store needs to close or trade severely impacted |
+| Five.ID Support | support@five.id · +44 7916 468 891 | Payment terminal hardware faults, transaction disputes, replacement | Directed by Dave, or if Dave unavailable and terminal is down |
+| Kurve Support | WhatsApp: +44 117 325 3256 · Or via Kurve dashboard | Kiosk software, menu sync, order routing, server outages | Directed by Dave |
+| Lightspeed Support | Via Lightspeed dashboard | POS software bugs, server outages, account issues | Only if directed by Dave |
+| Internet Provider | See store setup sheet | Broadband outages, router replacement | Only if directed by Dave |
+
+## 7. Store closure checklist
+
+If you need to close the store due to a POS or tech failure, follow this checklist.
+
+<Steps>
+  <Step title="Notify your Area Manager">
+    Immediately, with details.
+  </Step>
+  <Step title="Notify Dave (Ops / Tech)">
+    Include details of the issue.
+  </Step>
+  <Step title="Manage in-store customers">
+    Apologise and direct them to the nearest Sprout location.
+  </Step>
+  <Step title="Display closure signage">
+    Use the Temporarily Closed sign from the back office.
+  </Step>
+  <Step title="Power off kiosks">
+    Add Out of Order signs to each.
+  </Step>
+  <Step title="Pause delivery platforms">
+    Deliveroo, Just Eat, Uber Eats — pause all tablets.
+  </Step>
+  <Step title="Stay in store">
+    Do not leave unattended — wait for confirmation from your Area Manager.
+  </Step>
+  <Step title="Document everything">
+    Time of closure, issue details, steps taken, customer impact.
+  </Step>
+  <Step title="Confirm before reopening">
+    Notify your Area Manager before resuming trade.
+  </Step>
+  <Step title="Run a test transaction">
+    On both till and kiosk before serving the first customer.
+  </Step>
+</Steps>
+
+## 8. Quick reference cards
+
+### 8.1 Five.ID terminal
+
+| Action | How to |
+| --- | --- |
+| Reset card reader | Insert a pin into the reset hole on the side of the reader |
+| Access Wi-Fi settings | Tap home screen 3 times quickly → Password: `GiveMeFive!` → Open WiFi Settings |
+| Exit settings | Long-press the FLIC button, or unplug and replug the terminal |
+| Correct power socket | Always use the socket marked with a Five sticker |
+| QR code scanning distance | Hold QR code 10–20 cm from the sensor |
+| Five.ID Support | support@five.id · +44 7916 468 891 |
+
+### 8.2 Kurve kiosk
+
+| Action | How to |
+| --- | --- |
+| Soft restart | Hold the Elo power button (rear/underside) for 3 seconds → wait 10 seconds → press once |
+| Hard restart | Unplug power → wait 30 seconds → replug |
+| Access Kurve admin panel | Hold the screensaver for 3 seconds → passcode `925790` |
+| Lock kiosk (out of order) | Admin panel → lock the kiosk |
+| Access card machine settings | Supervisor code `2013` |
+| Check card machine Wi-Fi | Supervisor code `2013` → Wi-Fi / Network settings |
+| Not fixable in 5 minutes? | Lock via admin panel → Out of Order sign → direct to till → escalate |
+| Kurve Support | WhatsApp: +44 117 325 3256 |
+
+## Need help?
+
+If this guide hasn't resolved your issue, contact **Dave (Ops / Tech)** as your first point of escalation. For after-hours emergencies affecting trade, contact your **Area Manager** (Lee or Renan).
+
+<Info>
+  Document version 1.2 · March 2026 · Owner: Dave (Operations)
+</Info>
